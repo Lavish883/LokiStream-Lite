@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "lokiStreamLite",
+    "name": "LokiStream Lite",
     "slug": "lokiStreamLite",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,22 +8,26 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#333131"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 10000,
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lavishk.lokiStreamLite"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.lavishk.lokiStreamLite"
     },
     "web": {
       "favicon": "./assets/favicon.png"
