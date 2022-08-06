@@ -173,6 +173,20 @@ export function SearchApp({ navigation }) {
 // Watch Video
 export function WatchAnimeApp({ route, navigation }) {
     const { link } = route.params;
+    const [iframeLink, setIframeLink] = useState('');
+    const [isLoading, setLoading] = useState(true);
+
+    async function getIframeLink() {
+        let dataFetch = await fetch(serverLink + 'watch/' + link);
+        let resp = await dataFetch.text();
+        setIframeLink(resp);
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        getIframeLink()
+    })
+    /*
     // Change Screen Orientation
     async function changeScreenOrientation() {
         await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT);
@@ -192,12 +206,21 @@ export function WatchAnimeApp({ route, navigation }) {
         const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
         return () => backHandler.remove();
     }, []);
+    */
     return (
-        <WebView
-            allowsFullscreenVideo={true}
-            style={styles.container}
-            source={{ uri: 'https://lavish883.github.io/Loki-Stream/?' + link }}
-        />
+        <View style={{ flex: 1 }}>
+            <StatusBar hidden={true} />
+            <View style={{ backgroundColor: 'black', flex: 1 }}>
+                { isLoading ? 
+                    <ActivityIndicator color="white" size="large" style={styles.loading} />
+                    :
+                    <WebView
+                        allowsFullscreenVideo={true}
+                        source={{ uri: iframeLink}}
+                    />
+                }
+            </View>    
+        </View>
         )
 }
 // Anime Description and Episodes
@@ -354,7 +377,7 @@ export function renderListHorizantal({ item }, navigation, double = false){
             <Image source={{ uri: item.img, width: widthImage, height: heightImage }} />
             <Text ellipsizeMode={"tail"} numberOfLines={2} style={double ? styles.searchTitle : styles.animeTitle }>{item.title}</Text>
             { double ? <Text style={[styles.epNumber, {fontSize:12.5}]}>Released: {item.released}</Text> :
-            <Text style={styles.epNumber}>{isNaN(item.epNumber) === false ? 'Episode ' + item.epNumber : item.epNumber}</Text>
+            <Text style={styles.epNumber}>{item.epNumber != null ? 'Episode ' + item.epNumber : item.epNumber}</Text>
         }
         </View>
     </TouchableWithoutFeedback>
@@ -397,20 +420,23 @@ const genreProducer = ({ item }) => {
         )
 }
 
-export const renderListPopular = ({ item }) => {
+export function renderListPopular({ item }, navigation) {
     var genresList1 = JSON.stringify(item.genres)
     var genresList2 = JSON.parse(genresList1).splice(0, 4)
     return (
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('EpAnime', { catLink: item.catLink })}>
+
     <View style={ styles.renderListPopularView }>
-        <Image style={{borderRadius:4}} source={{ uri: item.img, width:105, height:145.95 }} />
-        <View style={ styles.renderListPopularDetails }>
-            <Text style={ styles.renderListPopularHeading }>{item.title}</Text>
-            <Text style={ styles.renderListPopularEp }>{item.epNumber}</Text>
-            <View>
-                <FlatList ItemSeparatorComponent={inBetweenListHor} style={{ marginTop: 8}} data={genresList2} numColumns={2} keyExtractor={item => item} renderItem={genreProducer} />
+                <Image style={{ borderRadius: 4 }} source={{ uri: item.img, width: 105, height: 145.95 }} />
+            <View style={ styles.renderListPopularDetails }>
+                <Text style={ styles.renderListPopularHeading }>{item.title}</Text>
+                <Text style={ styles.renderListPopularEp }>{item.epNumber}</Text>
+                <View>
+                    <FlatList ItemSeparatorComponent={inBetweenListHor} style={{ marginTop: 8}} data={genresList2} numColumns={2} keyExtractor={item => item} renderItem={genreProducer} />
+                </View>
             </View>
-        </View>
-    </View>        
+            </View>
+        </TouchableWithoutFeedback>
         )
 }
 

@@ -39,25 +39,25 @@ function Home({ navigation }) {
             <StatusBar style="light" />    
                 <HeaderApp navigation={ navigation } />
                 {isLoading ? <ActivityIndicator color="white" size="large" style={styles.loading} /> :
-            <ScrollView refreshControl ={ <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
+            <ScrollView vertical={true} refreshControl ={ <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />}>
                 {contuineWatching === null ? <View></View> : 
                 <View>
                     <Text style={styles.titles}>Continue Watching </Text>
-                    <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={contuineWatching} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.link}></FlatList>
+                    <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={contuineWatching} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.catLink}></FlatList>
                 </View>
                 }
                 <Text style={styles.titles}>Recent Sub</Text> 
-                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[0]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.link}></FlatList>
+                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[0]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.catLink}></FlatList>
                 <Text style={styles.titles}>Recent Dub</Text>    
-                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[1]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.link}></FlatList>
+                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[1]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.catLink}></FlatList>
                 <Text style={styles.titles}>Recent Chinese</Text>    
-                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[2]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.link}></FlatList>
+                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[2]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.catLink}></FlatList>
                 <Text style={styles.titles}>New Season</Text>
-                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[3]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.link}></FlatList>
+                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[3]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.catLink}></FlatList>
                 <Text style={styles.titles}>Movies</Text>
-                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[4]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.link}></FlatList>
+                <FlatList showsHorizontalScrollIndicator={false} horizontal={true} ItemSeparatorComponent={inBetweenListHor} data={EpData[4]} renderItem={item => renderListHorizantal(item, navigation)} keyExtractor={item => item.catLink}></FlatList>
                 <Text style={styles.titlesP}>Popular Anime</Text>
-                <FlatList showsHorizontalScrollIndicator={false} horizontal={false} data={EpData[5]} renderItem={renderListPopular} keyExtractor={item => item.link}></FlatList>
+                <FlatList showsHorizontalScrollIndicator={false} horizontal={false} data={EpData[5]} renderItem={item => renderListPopular(item, navigation)} keyExtractor={item => item.link}></FlatList>
             </ScrollView>
             }
         </View>
