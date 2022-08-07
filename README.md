@@ -3,6 +3,8 @@
 
 <a href="https://github.com/Lavish883/lokiStreamLite/releases/download/v1.0.0/LokiStream.Lite.v1.0.0.apk" target="_blank">Download now ⬇⬇⬇</a>
 
+![GitHub all releases](https://img.shields.io/github/downloads/Lavish883/lokiStreamLite/total?style=plastic)
+
 <h4>Do not PUT LokiStream Lite OR ANY FORK OF IT INTO GOOGLE PLAYSTORE or Any other Store. It may VIOLATE THEIR TERMS AND CONDITIONS or you may encounter legal obligations. I am not accounatble for if that happens.</h4>
 
 <!--<img src="https://user-images.githubusercontent.com/70912602/183312155-88b05313-f798-4ce5-b628-6e1b197ca0df.jpg" />--->
