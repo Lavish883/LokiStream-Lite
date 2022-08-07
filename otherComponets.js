@@ -205,6 +205,7 @@ export function WatchAnimeApp({ route, navigation }) {
         };
         const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
         return () => backHandler.remove();
+
     }, []);
     */
     return (
@@ -269,7 +270,7 @@ export function EpAnime({ route, navigation }) {
         return (
             <TouchableWithoutFeedback onPress={() => addStoredValue(navigation, item, 'allWatched')}>
                 <View style={{ backgroundColor: item.watched === true ? '#07ab1d':'#242424', padding: 10, marginBottom: 15, justifyContent: 'center', borderRadius: 5 }}>
-                    <Text style={{ color: 'white' }}>{item.epNumber}</Text>
+                    <Text style={{ color: 'white' }}>{item.epNumber.replace('Episode ', '')}</Text>
                 </View>
             </TouchableWithoutFeedback>
         )
@@ -377,7 +378,7 @@ export function renderListHorizantal({ item }, navigation, double = false){
             <Image source={{ uri: item.img, width: widthImage, height: heightImage }} />
             <Text ellipsizeMode={"tail"} numberOfLines={2} style={double ? styles.searchTitle : styles.animeTitle }>{item.title}</Text>
             { double ? <Text style={[styles.epNumber, {fontSize:12.5}]}>Released: {item.released}</Text> :
-            <Text style={styles.epNumber}>{item.epNumber != null ? 'Episode ' + item.epNumber : item.epNumber}</Text>
+            <Text style={styles.epNumber}>{item.epNumber != null ? item.epNumber : item.epNumber}</Text>
         }
         </View>
     </TouchableWithoutFeedback>
