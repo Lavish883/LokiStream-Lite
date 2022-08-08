@@ -186,7 +186,7 @@ export function WatchAnimeApp({ route, navigation }) {
     useEffect(() => {
         getIframeLink()
     })
-    /*
+    
     // Change Screen Orientation
     async function changeScreenOrientation() {
         await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT);
@@ -207,7 +207,7 @@ export function WatchAnimeApp({ route, navigation }) {
         return () => backHandler.remove();
 
     }, []);
-    */
+    
     return (
         <View style={{ flex: 1 }}>
             <StatusBar hidden={true} />
