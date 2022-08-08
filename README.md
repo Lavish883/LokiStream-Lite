@@ -1,6 +1,7 @@
 <h1>LokiStream Lite</h1>
 <h3>A lite version for the my original app loki stream. This app is faster, smaller and more optimized for your phone. It allows you to watch your favorite anime on your phone without any ads. Sadly this app is only avaible for android.</h3>
 
+<h3>Tell your freinds about this new app and star the repo to show support. ⭐</h3>
 
 <p>
   <h4>For Android download the apk below and install it.</h4>
