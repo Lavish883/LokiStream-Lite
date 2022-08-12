@@ -377,7 +377,7 @@ export function renderListHorizantal({ item }, navigation, double = false){
             }
             <Image source={{ uri: item.img, width: widthImage, height: heightImage }} />
             <Text ellipsizeMode={"tail"} numberOfLines={2} style={double ? styles.searchTitle : styles.animeTitle }>{item.title}</Text>
-            { double ? <Text style={[styles.epNumber, {fontSize:12.5}]}>Released: {item.released}</Text> :
+            { double ? <Text style={[styles.epNumber, {fontSize:12.5}]}>{item.released}</Text> :
             <Text style={styles.epNumber}>{item.epNumber != null ? item.epNumber : item.epNumber}</Text>
         }
         </View>

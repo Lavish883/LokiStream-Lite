@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Text, View, FlatList, LogBox, ActivityIndicator, RefreshControl } from 'react-native';
+import { Platform, ScrollView, Text, View, FlatList, LogBox, ActivityIndicator, RefreshControl } from 'react-native';
 import { styles } from './styles.js';
 import { HeaderApp, renderListHorizantal, inBetweenListHor, renderListPopular, SearchApp, WatchAnimeApp, EpAnime, HeartedAnime, getStoredValues } from './otherComponets.js';
 import { NavigationContainer } from '@react-navigation/native';
@@ -33,6 +33,7 @@ function Home({ navigation }) {
     useEffect(() => {
         fetchAnimes()
     }, [])
+    // <Text style={styles.titles}>{Platform.isTV.toString()}</Text>
     return (
     <View style={ styles.Android } >
         <View style={styles.container}>
