@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const serverLink = "https://takemyassm3u8maker.herokuapp.com/";
+const serverLink = "https://takemyassm3u8maker-lavish883.koyeb.app/";
 
 // Async Storage Keys
 // 'hearted' - for anime that are hearted needs, relased date, Title, Img,

@@ -6,7 +6,7 @@ import { HeaderApp, renderListHorizantal, inBetweenListHor, renderListPopular, S
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const serverLink = "https://takemyassm3u8maker.herokuapp.com/";
+const serverLink = "https://takemyassm3u8maker-lavish883.koyeb.app/";
 
 function Home({ navigation }) {
     const [EpData, SetData] = useState();

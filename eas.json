@@ -15,11 +15,11 @@
       "developmentClient": true
     },
     "production": {
-	"channel": "production",
-	"android": {
-           "buildType": "apk"
-      	}
-     }
+      "channel": "production",
+      "android": {
+        "buildType": "apk"
+      }
+    }
   },
   "cli": {
     "version": ">= 0.43.0"

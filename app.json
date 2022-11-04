@@ -2,10 +2,15 @@
   "expo": {
     "name": "LokiStream Lite",
     "slug": "lokiStreamLite",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "sdkVersion": "46.0.0",
+    "extra": {
+      "eas": {
+        "projectId": "bad39693-ca8a-4da0-abd5-5ae908b98f6c"
+      }
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
