@@ -162,7 +162,7 @@ export function SearchApp({ navigation }) {
                 </View>
                 {isSearching ? <ActivityIndicator color="white" size="large" style={styles.loading} /> :
                 <View style={{paddingTop:10,paddingBottom:10,flex:1,paddingRight:5,paddingLeft:5}}>
-                        <FlatList keyboardShouldPersistTaps={"always"} onEndReached={() => SetPage(onPage + 1)} columnWrapperStyle={{justifyContent:'space-between'}} ItemSeparatorComponent={item => inBetweenListHor(item, true)} numColumns={2} data={searchedItems} renderItem={item => renderListHorizantal(item, navigation , true)}></FlatList>
+                        <FlatList showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={"always"} onEndReached={() => SetPage(onPage + 1)} columnWrapperStyle={{justifyContent:'space-between'}} ItemSeparatorComponent={item => inBetweenListHor(item, true)} numColumns={2} data={searchedItems} renderItem={item => renderListHorizantal(item, navigation , true, true)}></FlatList>
                 </View>
                 }
                 {isLoadingMore ? <ActivityIndicator color="white" size="small" style={styles.loading} /> : <View></View> }
@@ -357,7 +357,7 @@ export function EpAnime({ route, navigation }) {
         </View>
         )
 }
-export function renderListHorizantal({ item }, navigation, double = false){
+export function renderListHorizantal({ item }, navigation, double = false, search = false){
     // Width & Height for the Items
     var widthImage = 120;
     var heightImage = 166.8;
@@ -377,7 +377,7 @@ export function renderListHorizantal({ item }, navigation, double = false){
             }
             <Image source={{ uri: item.img, width: widthImage, height: heightImage }} />
             <Text ellipsizeMode={"tail"} numberOfLines={2} style={double ? styles.searchTitle : styles.animeTitle }>{item.title}</Text>
-            { double ? <Text style={[styles.epNumber, {fontSize:12.5}]}>{item.released}</Text> :
+            { double ? <Text style={[styles.epNumber, {fontSize:12.5}]}>{ (search == true ? 'Released: ' : '' ) + (item.released == undefined ? 'None': item.released)}</Text> :
             <Text style={styles.epNumber}>{item.epNumber != null ? item.epNumber : item.epNumber}</Text>
         }
         </View>
