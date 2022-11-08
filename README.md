@@ -5,7 +5,7 @@
 <a href="https://discord.gg/UkgY94VW7G" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="UkgY94VW7G" height="30" width="40" /></a> Join the discord server to report issues and suggest new ideas.
 <p>
   <h4>For Android download the apk below and install it.</h4>
-  <a href="https://github.com/Lavish883/lokiStreamLite/releases/download/v1.0.0/LokiStream.Lite.v1.0.0.apk" target="_blank">Download now ⬇⬇⬇</a>
+  <a href="https://github.com/Lavish883/LokiStream-Lite/releases/download/v1.1.0/LokiStream.Lite.v1.1.0.apk" target="_blank">Download now ⬇⬇⬇</a>
 </p>
 
 ![GitHub all releases](https://img.shields.io/github/downloads/Lavish883/lokiStreamLite/total?style=plastic)
