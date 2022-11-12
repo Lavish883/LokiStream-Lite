@@ -3,10 +3,12 @@ import { styles } from './styles.js';
 import { WebView } from 'react-native-webview';
 import { useState, useEffect } from 'react';
 import * as ScreenOrientation from 'expo-screen-orientation';
-import { Text, View, BackHandler , Image, Dimensions, FlatList, TouchableWithoutFeedback, TextInput, ActivityIndicator, ScrollView  } from 'react-native';
+import { Text, View, BackHandler , Image, Dimensions, FlatList, TouchableWithoutFeedback, TextInput, ActivityIndicator, ScrollView, Button  } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Linking from 'expo-linking';
+
 
 const serverLink = "https://takemyassm3u8maker-lavish883.koyeb.app/";
 
@@ -90,6 +92,23 @@ async function addStoredValue(navigation, item, name) {
         }
     }
 }
+// for my anime list authoriztion
+function malAuth() {
+    const url = Linking.useURL();
+
+    if (url) {
+        const { hostname, path, queryParams } = Linking.parse(url);
+
+        console.log(
+            `Linked to app with hostname: ${hostname}, path: ${path} and data: ${JSON.stringify(
+                queryParams
+            )}`
+        );
+    }
+
+    return null;
+}
+
 // Navigation for Homepage
 export function HeaderApp({ navigation }) {
     return (
@@ -160,6 +179,7 @@ export function SearchApp({ navigation }) {
                     </TouchableWithoutFeedback>
                     <TextInput onChangeText={value => SetValue(value)} placeholder={'Search for Anime'} placeholderTextColor={'#bfbfbf'} style={styles.SearchAnimeInput}></TextInput>
                 </View>
+                <Button title="try it out" onPress={() => Linking.openURL("https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=acd730572f207d0eab8230a6bb7dac8c&code_challenge=NklUDX_CzS8qrMGWaDzgKs6VqrinuVFHa0xnpWPDy7_fggtM6kAar4jnTwOgzK7nPYfE9n60rsY4fhDExWzr5bf7sEimoqlkjsdaNZ8g&state=RequestID42&redirect_uri=exp://10.0.0.28:19000/--/path")} />
                 {isSearching ? <ActivityIndicator color="white" size="large" style={styles.loading} /> :
                 <View style={{paddingTop:10,paddingBottom:10,flex:1,paddingRight:5,paddingLeft:5}}>
                         <FlatList showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={"always"} onEndReached={() => SetPage(onPage + 1)} columnWrapperStyle={{justifyContent:'space-between'}} ItemSeparatorComponent={item => inBetweenListHor(item, true)} numColumns={2} data={searchedItems} renderItem={item => renderListHorizantal(item, navigation , true, true)}></FlatList>

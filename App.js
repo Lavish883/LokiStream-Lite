@@ -5,6 +5,7 @@ import { styles } from './styles.js';
 import { HeaderApp, renderListHorizantal, inBetweenListHor, renderListPopular, SearchApp, WatchAnimeApp, EpAnime, HeartedAnime, getStoredValues } from './otherComponets.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as Linking from 'expo-linking';
 
 const serverLink = "https://takemyassm3u8maker-lavish883.koyeb.app/";
 
@@ -69,6 +70,38 @@ function Home({ navigation }) {
 const Stack = createNativeStackNavigator();
 
 function App() {
+    // for mal authoriztion listen to their redirect url 
+    const url = Linking.useURL();
+    if (url) {
+        const { hostname, path, queryParams } = Linking.parse(url);
+
+        console.log(
+            `Linked to app with hostname: ${hostname}, path: ${path} and data: ${JSON.stringify(
+                queryParams
+            )}`
+        );
+
+        const fetchURL = 'https://myanimelist.net/v1/oauth2/token';
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+                "client_id": "acd730572f207d0eab8230a6bb7dac8c",
+                "code": queryParams.code,
+                "code_verifier": "NklUDX_CzS8qrMGWaDzgKs6VqrinuVFHa0xnpWPDy7_fggtM6kAar4jnTwOgzK7nPYfE9n60rsY4fhDExWzr5bf7sEimoqlkjsdaNZ8g",
+                "grant_type": "authorization_code"
+            })
+        };
+
+
+
+        fetch(fetchURL, options)
+            .then(response => response.json())
+            .then(respData => console.log(respData))
+    }
+
     return (
         <NavigationContainer>
             <Stack.Navigator>
