@@ -59,7 +59,7 @@ async function addStoredValue(navigation, item, name) {
                 alreadyInStorage.unshift(item);
                 await AsyncStorage.setItem(name, JSON.stringify(alreadyInStorage));
             }
-            navigation.navigate('Watch', { link: item.link })
+            navigation.navigate('Watch', { link: item.link, animeName: name });
         } catch (err) {
             console.log(err);
         }
@@ -169,6 +169,7 @@ export function SearchApp({ navigation }) {
             searchAnime(onPage)
         }
     }, [onPage])
+    // <Button title="try it out" onPress={() => Linking.openURL("https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=acd730572f207d0eab8230a6bb7dac8c&code_challenge=NklUDX_CzS8qrMGWaDzgKs6VqrinuVFHa0xnpWPDy7_fggtM6kAar4jnTwOgzK7nPYfE9n60rsY4fhDExWzr5bf7sEimoqlkjsdaNZ8g&state=RequestID42&redirect_uri=")} />
     return (
         <View style={styles.Android}>
             <View style={styles.container}>
@@ -179,7 +180,6 @@ export function SearchApp({ navigation }) {
                     </TouchableWithoutFeedback>
                     <TextInput onChangeText={value => SetValue(value)} placeholder={'Search for Anime'} placeholderTextColor={'#bfbfbf'} style={styles.SearchAnimeInput}></TextInput>
                 </View>
-                <Button title="try it out" onPress={() => Linking.openURL("https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=acd730572f207d0eab8230a6bb7dac8c&code_challenge=NklUDX_CzS8qrMGWaDzgKs6VqrinuVFHa0xnpWPDy7_fggtM6kAar4jnTwOgzK7nPYfE9n60rsY4fhDExWzr5bf7sEimoqlkjsdaNZ8g&state=RequestID42&redirect_uri=exp://10.0.0.28:19000/--/path")} />
                 {isSearching ? <ActivityIndicator color="white" size="large" style={styles.loading} /> :
                 <View style={{paddingTop:10,paddingBottom:10,flex:1,paddingRight:5,paddingLeft:5}}>
                         <FlatList showsVerticalScrollIndicator={false} keyboardShouldPersistTaps={"always"} onEndReached={() => SetPage(onPage + 1)} columnWrapperStyle={{justifyContent:'space-between'}} ItemSeparatorComponent={item => inBetweenListHor(item, true)} numColumns={2} data={searchedItems} renderItem={item => renderListHorizantal(item, navigation , true, true)}></FlatList>
@@ -192,12 +192,12 @@ export function SearchApp({ navigation }) {
 }
 // Watch Video
 export function WatchAnimeApp({ route, navigation }) {
-    const { link } = route.params;
+    const { link, animeName } = route.params;
     const [iframeLink, setIframeLink] = useState('');
     const [isLoading, setLoading] = useState(true);
 
     async function getIframeLink() {
-        let dataFetch = await fetch(serverLink + 'watch/' + link);
+        let dataFetch = await fetch(serverLink + 'watch/' + link + '/' + animeName);
         let resp = await dataFetch.text();
         setIframeLink(resp);
         setLoading(false);
