@@ -14,8 +14,7 @@
 
 <!--<img src="https://user-images.githubusercontent.com/70912602/183312155-88b05313-f798-4ce5-b628-6e1b197ca0df.jpg" />--->
 <h4>Video player designed for the best user experience</h4>
-<img src="https://user-images.githubusercontent.com/70912602/183313144-fe1837c9-4f75-43cf-90f9-4213e9a52858.jpg" width="500" />
-
+<img height="250" src="https://github.com/Lavish883/LokiStream-Lite/assets/70912602/bf541b93-41c7-4d17-b82a-fea7d6797842" />
 
 <h4>Main Screen - Lists new subbed, dubbed, popular anime and much more</h4>
 <p>
