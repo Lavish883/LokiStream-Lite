@@ -7,8 +7,8 @@ import { Text, View, BackHandler , Image, Dimensions, FlatList, TouchableWithout
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
-
 
 const serverLink = "https://takemyassm3u8maker-lavish883.koyeb.app/";
 
@@ -59,7 +59,7 @@ async function addStoredValue(navigation, item, name) {
                 alreadyInStorage.unshift(item);
                 await AsyncStorage.setItem(name, JSON.stringify(alreadyInStorage));
             }
-            navigation.navigate('Watch', { link: item.link, animeName: name });
+            navigation.navigate('Watch', { link: item.link, animeName: item.title });
         } catch (err) {
             console.log(err);
         }
@@ -115,6 +115,9 @@ export function HeaderApp({ navigation }) {
         <View style={ styles.header}>
             <Text style={styles.heading}>LokiStream</Text>
             <View style={styles.iconContanier}>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('Login')}>
+                    <Ionicons style={styles.iconSpace} name="person" size={28} color="white" />
+                </TouchableWithoutFeedback >
                 <TouchableWithoutFeedback onPress={() => navigation.navigate("Hearted")}>
                     <Ionicons style={styles.iconSpace} name="md-heart" size={28} color="#e84f4f" />
                 </TouchableWithoutFeedback >
@@ -125,6 +128,31 @@ export function HeaderApp({ navigation }) {
         </View>
         );
 };
+// For loging in
+export function LoginApp({ navigation }) {
+
+    function addListener() {
+        Linking.addEventListener('url', (event) => {
+            console.log(event);
+        })
+        WebBrowser.openBrowserAsync('http://10.0.0.107:8190/login');
+    }
+    return (
+        <View style={styles.Android}>
+            <View style={styles.container}>
+                <StatusBar style="light" />
+                <View style={styles.SearchHeader}>
+                    <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+                        <Ionicons style={{ marginTop: 4 }} name="arrow-back-outline" size={28} color="white" />
+                    </TouchableWithoutFeedback>
+                    <Text style={{ color: 'white', marginTop: 4, fontSize: 20, marginLeft: 8 }}>Login</Text>
+                </View>
+                <Text style={{color: 'white', marginTop:4, fontSize: 25}}>Login in is devlopnemnt</Text>
+                <Button onPress={() => {addListener()}} title="Login in" />
+            </View>
+        </View>
+    )
+}
 // Page for Searching
 export function SearchApp({ navigation }) {
     // States
@@ -169,7 +197,7 @@ export function SearchApp({ navigation }) {
             searchAnime(onPage)
         }
     }, [onPage])
-    // <Button title="try it out" onPress={() => Linking.openURL("https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=acd730572f207d0eab8230a6bb7dac8c&code_challenge=NklUDX_CzS8qrMGWaDzgKs6VqrinuVFHa0xnpWPDy7_fggtM6kAar4jnTwOgzK7nPYfE9n60rsY4fhDExWzr5bf7sEimoqlkjsdaNZ8g&state=RequestID42&redirect_uri=")} />
+    //                 <Button title="try it out" onPress={() => Linking.openURL("https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=acd730572f207d0eab8230a6bb7dac8c&code_challenge=NklUDX_CzS8qrMGWaDzgKs6VqrinuVFHa0xnpWPDy7_fggtM6kAar4jnTwOgzK7nPYfE9n60rsY4fhDExWzr5bf7sEimoqlkjsdaNZ8g&state=RequestID42&redirect_uri=exp://10.0.0.107:19000/--/path")} />
     return (
         <View style={styles.Android}>
             <View style={styles.container}>
@@ -369,7 +397,7 @@ export function EpAnime({ route, navigation }) {
                             <Ionicons style={{marginLeft:5}} name="search-sharp" color={'#bfbfbf'} size={16} />
                             <TextInput onChangeText={text => setValueEp(text)} placeholder={"Search for a episode"} placeholderTextColor={"#bfbfbf"} keyboardType={'number-pad'} maxLength={8} style={{paddingLeft:2,paddingRight:8,paddingTop:5,paddingBottom:5 ,alignSelf: 'center', color: 'white' }} />
                         </View>
-                        <FlatList columnWrapperStyle={{ justifyContent: 'space-evenly' }} numColumns={5} data={episodes} renderItem={item => renderEp(item, navigation)} keyExtractor={item => item.link} />
+                        <FlatList columnWrapperStyle={{ justifyContent: 'space-evenly' }} numColumns={5} data={episodes} renderItem={item => renderEp(item, navigation)} />
                     </View>
                 </ScrollView>
             }
@@ -453,7 +481,7 @@ export function renderListPopular({ item }, navigation) {
                 <Text style={ styles.renderListPopularHeading }>{item.title}</Text>
                 <Text style={ styles.renderListPopularEp }>{item.epNumber}</Text>
                 <View>
-                    <FlatList ItemSeparatorComponent={inBetweenListHor} style={{ marginTop: 8}} data={genresList2} numColumns={2} keyExtractor={item => item} renderItem={genreProducer} />
+                    <FlatList ItemSeparatorComponent={inBetweenListHor} style={{ marginTop: 8}} data={genresList2} numColumns={2} renderItem={genreProducer} />
                 </View>
             </View>
             </View>
