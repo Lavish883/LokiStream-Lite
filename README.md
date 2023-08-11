@@ -5,7 +5,7 @@
 <a href="https://discord.gg/UkgY94VW7G" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="UkgY94VW7G" height="30" width="40" /></a> Join the discord server to report issues and suggest new ideas.
 <p>
   <h4>For Android download the apk below and install it.</h4>
-  <a href="https://github.com/Lavish883/LokiStream-Lite/releases/download/v1.1.0/LokiStream.Lite.v1.1.0.apk" target="_blank">Download now ⬇⬇⬇</a>
+  <a href="https://github.com/Lavish883/LokiStream-Lite/releases/download/v1.1.1/LokiStream.v1.1.1.apk" target="_blank">Download now ⬇⬇⬇</a>
 </p>
 
 ![GitHub all releases](https://img.shields.io/github/downloads/Lavish883/lokiStreamLite/total?style=plastic)
@@ -14,8 +14,7 @@
 
 <!--<img src="https://user-images.githubusercontent.com/70912602/183312155-88b05313-f798-4ce5-b628-6e1b197ca0df.jpg" />--->
 <h4>Video player designed for the best user experience</h4>
-<img src="https://user-images.githubusercontent.com/70912602/183313144-fe1837c9-4f75-43cf-90f9-4213e9a52858.jpg" width="500" />
-
+<img height="250" src="https://github.com/Lavish883/LokiStream-Lite/assets/70912602/bf541b93-41c7-4d17-b82a-fea7d6797842" />
 
 <h4>Main Screen - Lists new subbed, dubbed, popular anime and much more</h4>
 <p>
