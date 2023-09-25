@@ -10,7 +10,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
 
-const serverLink = "https://takemyassm3u8maker-lavish883.koyeb.app/";
+
+const serverLink = "https://m3u8parser-production.up.railway.app/";
 
 // Async Storage Keys
 // 'hearted' - for anime that are hearted needs, relased date, Title, Img,
@@ -128,7 +129,7 @@ export function HeaderApp({ navigation }) {
         </View>
         );
 };
-// For loging in
+// For logging in
 export function LoginApp({ navigation }) {
 
     function addListener() {

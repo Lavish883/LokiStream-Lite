@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Linking from 'expo-linking';
 
-const serverLink = "https://takemyassm3u8maker-lavish883.koyeb.app/";
+const serverLink = "https://m3u8parser-production.up.railway.app/";
 
 function Home({ navigation }) {
     const [EpData, SetData] = useState();
