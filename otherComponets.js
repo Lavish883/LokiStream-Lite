@@ -11,7 +11,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
 
 
-const serverLink = "https://m3u8parser-production.up.railway.app/";
+const serverLink = "https://takemyassm3u8maker-lavish883.koyeb.app/";
 
 // Async Storage Keys
 // 'hearted' - for anime that are hearted needs, relased date, Title, Img,
